@@ -11,9 +11,10 @@
 
 #include <math.h>
 
-#include <glad/glad.h> /* https://github.com/Dav1dde/glad */
+#define GLAD_GL_IMPLEMENTATION
+#include <glad/gl.h> /* https://github.com/Dav1dde/glad */
+#define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h> /* https://github.com/glfw/glfw */
-
 #define GLT_IMPLEMENTATION
 #include "gltext.h" /* https://github.com/vallentin/glText */
 
@@ -52,7 +53,7 @@ int main(int argc, char *argv[])
 	glfwShowWindow(window);
 	glfwMakeContextCurrent(window);
 
-	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+	if (!gladLoadGL((GLADloadfunc)glfwGetProcAddress))
 	{
 		fprintf(stderr, "Failed to load OpenGL functions and extensions\n");
 		glfwTerminate();
